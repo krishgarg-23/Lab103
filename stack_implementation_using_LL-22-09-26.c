@@ -33,5 +33,8 @@ int main() {
     push(40);
     pop();
     pop();
+    pop();
+    pop();
+    pop();
     return 0;
 }

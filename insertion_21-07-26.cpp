@@ -16,7 +16,7 @@ int main(){
     cout<<"Enter the element: ";
     cin>> ele;
     
-    for(int i=n; i>=pos; i--){
+    for(int i=n; i>pos; i--){
         arr[i]=arr[i-1];
     }
     arr[pos-1]=ele;

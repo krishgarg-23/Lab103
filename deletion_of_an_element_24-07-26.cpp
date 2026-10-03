@@ -8,7 +8,7 @@ int main(){
         cout<<"Enter the "<<i<< " element of the array: ";
         cin>> arr[i];
     }
-    cout<<"Array befor deletion: ";
+    cout<<"Array before deletion: ";
     for(i=0; i<n; i++){
         cout<<arr[i] << " ";
     }

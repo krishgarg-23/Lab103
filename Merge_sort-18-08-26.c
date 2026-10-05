@@ -9,7 +9,7 @@ void merge(int a[], int low, int mid, int high){
         L[i] = a[low + i];
     }
     for(int j=0; j<n2 ; j++){
-        R[i]= a[ mid +j + 1];
+        R[j]= a[ mid +j + 1];
     }
     L[n1]= INT_MAX;
     R[n2]= INT_MAX;

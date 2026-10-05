@@ -1,53 +1,47 @@
 #include <stdio.h>
 #include <limits.h>
 
-void merge(int a[], int p, int q, int r){
-    int n1= q-p+1;
-    int n2= r-q;
-    int l[n1+1], R[n2+1];
-
+void merge(int a[], int low, int mid, int high){
+    int n1= mid - low + 1;
+    int n2= high - mid;
+    int L[n1 + 1], R[n2+1];
     for(int i=0; i<n1; i++){
-        l[i]=a[p+i];
+        L[i] = a[low + i];
     }
-    for(int j=0; j<n2; j++){
-        R[j]= a[q+j+1];
+    for(int j=0; j<n2 ; j++){
+        R[i]= a[ mid +j + 1];
     }
-    l[n1]= INT_MAX;
+    L[n1]= INT_MAX;
     R[n2]= INT_MAX;
     int i=0, j=0;
-    for(int k=p; k<=r; k++){
-        if(l[i]<=R[j]){
-            a[k]=l[i];
+    for(int k=low; k<= high; k++){
+        if ( L[i] <= R[j]){
+            a[k]= L[i];
             i++;
         }
         else{
-            a[k]=R[j];
+            a[k] = R[j];
             j++;
         }
     }
 }
 
-void mergesort(int a[], int p, int r){
-    if(p<r){
-        int q= p + (r-p)/2;
-    
-        mergesort(a,p,q);
-        mergesort(a,q+1, r);
-        merge(a,p,q,r);
+void MergeSort(int a[], int low, int high){
+    if( low < high){
+        int mid = low + (high - low)/2;
+        MergeSort(a, low , mid);
+        MergeSort(a, mid + 1, high);
+        merge(a, low, mid, high);
     }
 }
 
-int main() {
-    int a[50],n;
-    printf("Enter n: ");
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &a[i]);
-    }
-    mergesort(a,0,n-1);
-    for(int i=0; i<n; i++){
+int main(){
+    int a[]= {7,6,5,4,3,2,1};
+    int n= sizeof(a)/ sizeof( a[0]);
+    MergeSort( a, 0, n-1);
+    for( int i=0; i<n; i++){
         printf("%d ", a[i]);
     }
     return 0;
+    
 }
